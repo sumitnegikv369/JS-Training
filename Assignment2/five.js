@@ -1,7 +1,7 @@
 // ? Write a function expression that takes in two numbers and returns their sum.
 
-const sum = (...rest) => {
-    return rest.reduce((num, acum)=>num+acum, 0);
+function sum(...rest) {
+  return rest.reduce((num, acum) => num + acum, 0);
 }
 
-console.log(sum(2,3,9));
+console.log(sum(2, 3, 9));
