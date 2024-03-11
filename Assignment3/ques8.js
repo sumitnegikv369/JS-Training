@@ -2,31 +2,27 @@
 
 function differentTypesOfLoops() {
   for (let i = 1; i <= 20; i++) {
-    console.log(i);
+    console.log("first: ",i);
   }
 
   let i = 1;
   while (i <= 20) {
-    console.log(i);
+    console.log("second: ",i);
     i++;
   }
 
   let j = 1;
   do {
-    console.log(j);
+    console.log("third: ",j);
     j++;
   } while (j <= 20);
 
-  for (const i in 20) {
-    console.log(i);
+  for (const i in new Array(4).fill(1)) {
+    console.log("fourth: ", i + 1);
   }
 
-  for (const i in new Array(50).fill(1)) {
-    console.log(i + 1);
-  }
-
-  for (const i of new Array(50).keys()) {
-    console.log(i + 1);
+  for (const i of new Array(4).keys()) {
+    console.log("fifth:" ,i + 1);
   }
 }
 
