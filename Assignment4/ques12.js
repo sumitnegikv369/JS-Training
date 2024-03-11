@@ -2,20 +2,21 @@
 
 function intersection(arr1, arr2) {
   const result = [];
+  let arrToCompare, arrToIterate;
 
   if (arr1.length > arr2.length) {
-    for (let i of arr1) {
-      if (arr2.indexOf(i) !== -1) {
-        result.push(i);
-      }
-    }
-  } else {
-    for (let i of arr2) {
-      if (arr1.indexOf(i) !== -1) {
-        result.push(i);
-      }
-    }
+    arrToIterate = arr1;
+    arrToCompare = arr2;
+  }else{
+    arrToIterate = arr2;
+    arrToCompare = arr1;
   }
+
+    for (let i of arrToIterate) {
+      if (arrToCompare.indexOf(i) !== -1) {
+        result.push(i);
+      }
+    }
   return result;
 }
 
