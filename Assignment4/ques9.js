@@ -2,24 +2,22 @@
 
 function findLastIndexOfDuplicate(nums) {
   const freq = {};
-  const result = [];
 
   for (let i in nums) {
-    if (!freq[nums[i]]) {
-      freq[nums[i]] = i;
+    if (freq[nums[i]]) {
+      freq[nums[i]] = [...freq[nums[i]], i];
     } else {
-      freq[nums[i]] = freq[nums[i]] + " " + i;
-    }
-
-    if (freq[nums[i]].length > 1) {
-      result.push(parseInt(freq[nums[i]][freq[nums[i]].length - 1]));
+      freq[nums[i]] = [i];
     }
   }
 
-  return result.sort((a, b) => b - a)[0];
+  for (let i of Object.entries(freq)) {
+    if (i[1].length > 1) {
+      console.log(`Last duplicate index of ${i[0]}: ${i[1].at(-1)}`)
+    }
+  }
 }
 
-console.log(
-  "Last duplicate index: ",
-  findLastIndexOfDuplicate([1, 3, 4, 2, 5, 2, 8, 1])
-);
+findLastIndexOfDuplicate([1, 3, 4, 2, 5, 2, 8, 1])
+
+findLastIndexOfDuplicate([1, 3, 4, 2, 5, 2, 8, 1, 7, 9, 1, 11, 9])
