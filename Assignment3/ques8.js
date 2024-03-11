@@ -17,12 +17,17 @@ function differentTypesOfLoops() {
     j++;
   } while (j <= 20);
 
+  // Iterate over the characters of the string "100" using a for...in loop
+  for (const i in "100") {
+    console.log("fourth: ",i);
+  }
+
   for (const i in new Array(4).fill(1)) {
-    console.log("fourth: ", i + 1);
+    console.log("fifth: ", i + 1);
   }
 
   for (const i of new Array(4).keys()) {
-    console.log("fifth:" ,i + 1);
+    console.log("sixth:" ,i + 1);
   }
 }
 
