@@ -10,4 +10,4 @@ for (let i = 0; i < myArray.length; i++) {
    console.log(myArray[i]);
 }
 
-// ! Error Find: 'i' is going out of bound so we need to terminate loop when the i reach to the last index
+// ! Error Found: 'i' is going out of bound so we need to terminate loop when the i reach to the last index

@@ -11,3 +11,5 @@ function getData(callback) {
  getData(function(data) {
     console.log(data.length);
  });
+
+// ! code is working fine

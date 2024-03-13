@@ -16,3 +16,4 @@ let total = 0;
 myArray.forEach(function(element) { total += element; });
 console.log('The total of all elements in the array is: ' + total);
 
+// ! No error found, code working fine

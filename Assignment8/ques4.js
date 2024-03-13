@@ -19,7 +19,7 @@ if (myString.length > 0) {
     console.log('The string is empty');
 }
 
-let myNumber = myString;
+let myNumber = myString; // ! parsing of string to integer resulting in NAN
 if (typeof myNumber === "number") {
    console.log('The number is: ' + myNumber);
 } else {

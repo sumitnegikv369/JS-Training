@@ -15,9 +15,11 @@ for (let i = 0; i < myArray.length; i++) {
    console.log(myArray[i]);
 }
 
-let myNumber = myArray[3];
+let myNumber = myArray[3]; // added the index with in the bound
 if (myNumber) {
    console.log('The number is: ' + myNumber);
 } else {
    console.log('The number is undefined');
 }
+
+// ! no error found

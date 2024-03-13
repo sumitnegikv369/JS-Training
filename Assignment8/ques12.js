@@ -12,3 +12,5 @@ async function getData() {
 getData().then(function (data) {
     console.log(data);
 });
+
+// ! added resolve to get response when promise is fullfilled

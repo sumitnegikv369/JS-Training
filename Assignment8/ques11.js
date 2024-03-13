@@ -16,4 +16,4 @@ var promise = new Promise(function(resolve, reject) {
    console.log(error);
 });
  
- 
+// ! added catch method chaining to capture the rejected promise
