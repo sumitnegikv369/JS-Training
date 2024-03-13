@@ -3,49 +3,51 @@
 // ? 3.3 Create a class Teacher that inherits from the Person class and has a property subjectsTaught. Override the farewell() method to include information about what the teacher teaches.
 
 class Person {
-    constructor(firstName, lastName) {
-      this.firstName = firstName;
-      this.lastName = lastName;
-    }
-  
-    greeting() {
-      return `Hello, my name is ${this.firstName} ${this.lastName}.`;
-    }
-  
-    farewell() {
-      return `See you later, ${this.firstName}!`;
-    }
+  constructor(name, age, gender, interests) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+    this.interests = interests;
   }
-  
-  class Student extends Person {
-    constructor(firstName, lastName, studies) {
-      super(firstName, lastName);
-      this.studies = studies;
-    }
-  
-    greeting() {
-      return (
-        `Hi! I'm ${this.firstName} ${this.lastName} and I'm studying ${this.studies}.`
-      );
-    }
+
+  greeting() {
+    return `Hello, my name is ${this.name}.`;
   }
-  
-  class Teacher extends Person {
-    constructor(firstName, lastName, subjectsTaught) {
-      super(firstName, lastName);
-      this.subjectsTaught = subjectsTaught;
-    }
-  
-    farewell() {
-      return (
-        `Goodbye, ${this.firstName} Sir, I Have a great time learning ${this.subjectsTaught}.`
-      );
-    }
+
+  farewell() {
+    return `See you later, ${this.name}!`;
   }
-  
-  // Create instances
-  const student1 = new Student("Sumit", "Negi", "Computer Science");
-  const teacher1 = new Teacher("Uday", "Bisht", "Arts");
-  
-  console.log(student1.greeting());
-  console.log(teacher1.farewell());
+}
+
+class Student extends Person {
+  constructor(name, age, gender, interests, studies) {
+    super(name, age, gender, interests);
+    this.studies = studies;
+  }
+
+  greeting() {
+    return (
+      `Hi! I'm ${this.name} and I'm studying ${this.studies}.`
+    );
+  }
+}
+
+class Teacher extends Person {
+  constructor(name, age, gender, interests, subjectsTaught) {
+    super(name, age, gender, interests);
+    this.subjectsTaught = subjectsTaught;
+  }
+
+  farewell() {
+    return (
+      `Goodbye, ${this.name}! Have a great time teaching ${this.subjectsTaught}.`
+    );
+  }
+}
+
+// Create instances
+const student1 = new Student("Sumit", 20, "Male", ["Programming", "Gaming"], "Computer Science");
+const teacher1 = new Teacher("Uday", 35, "Male", ["Reading", "Traveling"], "Arts");
+
+console.log(student1.greeting());
+console.log(teacher1.farewell());

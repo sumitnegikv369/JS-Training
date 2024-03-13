@@ -11,8 +11,10 @@ class Person {
     return this.firstName + " " + this.lastName;
   }
 
-  static averageAge(persons) {
-    return persons.reduce((acc, person) => person.age + acc.age) / 2;
+  static averageAge(persons = []) {
+    if (persons.length === 0) return 0;
+    const totalAge = persons.reduce((acc, person) => acc + person.age, 0);
+    return totalAge / persons.length;
   }
 }
 
@@ -23,3 +25,4 @@ const person2 = new Person("rohit", "rawat", 23);
 console.log(person1.fullName());
 console.log(person2.fullName());
 console.log(Person.averageAge([person1, person2]));
+console.log(Person.averageAge());
