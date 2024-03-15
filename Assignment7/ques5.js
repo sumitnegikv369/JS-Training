@@ -7,49 +7,46 @@ class TaskQueue {
     this.queue = [];
   }
 
-  runTask(task) {
-    if (this.runningTask < this.concurrency) {
-      this.runningTask++;
-      this.queue.push(
-        new Promise((resolve, reject) => {
-          const createdTask = async () => {
-            try {
-              const result = await task();
-              resolve(result);
-            } catch (error) {
-              reject(error);
-            }
-          };
-          createdTask();
-        })
-      );
-    } else {
-      this.runningTask--;
+  addTask(task) {
+    // Add the task to the queue
+    this.queue.push(task);
+    // Increment the number of running tasks
+    this.runningTask++;
+
+    // Check if the number of running tasks exceeds or equal to the concurrency limit
+    if (this.runningTask >= this.concurrency) {
       this.processQueue();
     }
   }
-  processQueue() {
-    if (this.queue.length > 0) {
-      this.queue.shift();
+
+  async processQueue() {
+    const concurrentQueue = [];
+    // Process tasks up to the concurrency limit
+    for (let i = 0; i < this.concurrency; i++) {
+      // Remove the concurrent task from the queue and schedule it for execution
+      const runTask = this.queue.shift();
+      concurrentQueue.push(runTask);
     }
+    this.runningTask = this.runningTask - this.concurrency;
+    const result = await Promise.all(concurrentQueue);
+    console.log(result);
+    console.log('\n');
   }
 }
 
-const tq = new TaskQueue(2);
+const taskQueue1 = new TaskQueue(2);
 
-const delayed = () =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("Task completed");
-    }, 1000);
-  });
+let randomMs = Math.floor(Math.random() * 10) * 2000;
 
-for (let i = 0; i < 10; i++) {
-  let taskNumber = i;
-  tq.runTask(async () => {
-    console.log(`starting task number ${taskNumber}`);
-    const response = await delayed();
-    console.log(response);
-    console.log(`ending task number ${taskNumber}`);
-  });
+const promise = (n) => new Promise((resolve) => {
+  setTimeout(() => {
+    console.log('task started');
+    resolve(`Task ${n}`);
+  }, n*500);
+});
+
+
+for (let i = 1; i <= 10; i++) {
+  // calling addTask method
+  taskQueue1.addTask(promise(i));
 }
