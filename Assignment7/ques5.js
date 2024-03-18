@@ -36,8 +36,6 @@ class TaskQueue {
 
 const taskQueue1 = new TaskQueue(2);
 
-let randomMs = Math.floor(Math.random() * 10) * 2000;
-
 const promise = (n) => new Promise((resolve) => {
   setTimeout(() => {
     console.log('task started');
